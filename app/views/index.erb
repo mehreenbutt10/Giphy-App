@@ -10,22 +10,30 @@
   <body>
     <h1>API Project</h1>
     <img id="gif" src=""/>
+    <p>Enter a search term here: <input id="search" /></p>
     <button onclick="getGiphyData()">Find a Gif</button>
-    <!--Utilizing Javascript  -->
-    <!-- <script>
+    <!-- Utilizing Javascript  -->
+    <script>
       function getGiphyData(){
           // Fetch giphy data from the giphy API
-          var url = 'https://api.giphy.com/v1/gifs/search?api_key=zQ5F6r6CK4N2EQHhrYRDtgli6HsvKbHp&q=potato'
+          var searchTerm = document.querySelector('#search').value
+          var url = 'https://api.giphy.com/v1/gifs/search?api_key=zQ5F6r6CK4N2EQHhrYRDtgli6HsvKbHp&q='+searchTerm
           // Pick a random gif from the search term we chose
           fetch(url)
           .then( data => data.json() )
           .then( res =>{
             console.log(res)
+
+            var arrayOfGifs = res.data
+            var rand = Math.floor(Math.random()*arrayOfGifs.length)
+            var firstItem = arrayOfGifs[rand]
+            var giphyLink = firstItem.images.fixed_width.url
+            document.querySelector('#gif').setAttribute('src', giphyLink)
           })
           .catch( error => console.log(error) )
           // Make gif appear on the page
       }
-    </script> -->
+    </script>
   </body>
 
 </html>
