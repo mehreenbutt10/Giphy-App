@@ -12,14 +12,20 @@
     <img id="gif" src=""/>
     <button onclick="getGiphyData()">Find a Gif</button>
     <!--Utilizing Javascript  -->
-    <script>
+    <!-- <script>
       function getGiphyData(){
           // Fetch giphy data from the giphy API
-          var url = ''
+          var url = 'https://api.giphy.com/v1/gifs/search?api_key=zQ5F6r6CK4N2EQHhrYRDtgli6HsvKbHp&q=potato'
           // Pick a random gif from the search term we chose
+          fetch(url)
+          .then( data => data.json() )
+          .then( res =>{
+            console.log(res)
+          })
+          .catch( error => console.log(error) )
           // Make gif appear on the page
       }
-    </script>
+    </script> -->
   </body>
 
 </html>
